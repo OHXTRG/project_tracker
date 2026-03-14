@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Project Tracker{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      <button>
+        <a href="{% url 'signup' %}">singup</a>
+      </button>
+      <button>
+        <a href="{% url 'login' %}">login</a>
+      </button>
+      <form method="post" action="{% url 'custom_logout' %}" style="display:inline-block">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+      </form>
+      {% comment %} <a href="{% url 'logout' %}">Logut</a> {% endcomment %}
+      <button>
+        <a href="{% url 'index' %}">Home</a>
+      </button>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+  </body>
+</html>
